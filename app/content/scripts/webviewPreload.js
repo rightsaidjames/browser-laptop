@@ -193,10 +193,10 @@
         if (credentials[action]) {
           credentials[action].push([passwordElem, usernameElem])
         } else {
-          credentials[action] = [passwordElem, usernameElem]
+          credentials[action] = [[passwordElem, usernameElem]]
         }
         // Ask the main process for the credentials
-        ipcRenderer.sendToHost('get-password', formOrigin, action)
+        ipcRenderer.send('get-password', formOrigin, action)
         console.log('got password field', formOrigin, action, usernameElem, passwordElem)
       }
     })
